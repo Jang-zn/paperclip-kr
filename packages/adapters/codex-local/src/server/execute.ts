@@ -217,7 +217,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your Paperclip work. You MUST respond and write all outputs in Korean (한국어).",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your Paperclip work. 모든 댓글, 문서, 보고서, 플랜을 반드시 한국어로 작성하라. 코드와 기술 용어만 영어 허용.",
   );
   const command = asString(config.command, "codex");
   const model = asString(config.model, "");

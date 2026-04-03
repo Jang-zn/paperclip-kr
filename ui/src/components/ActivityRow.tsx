@@ -5,47 +5,52 @@ import { cn } from "../lib/utils";
 import { deriveProjectUrlKey, type ActivityEvent, type Agent } from "@paperclipai/shared";
 
 const ACTION_VERBS: Record<string, string> = {
-  "issue.created": "created",
-  "issue.updated": "updated",
-  "issue.checked_out": "checked out",
-  "issue.released": "released",
-  "issue.comment_added": "commented on",
-  "issue.attachment_added": "attached file to",
-  "issue.attachment_removed": "removed attachment from",
-  "issue.document_created": "created document for",
-  "issue.document_updated": "updated document on",
-  "issue.document_deleted": "deleted document from",
-  "issue.commented": "commented on",
-  "issue.deleted": "deleted",
-  "agent.created": "created",
-  "agent.updated": "updated",
-  "agent.paused": "paused",
-  "agent.resumed": "resumed",
-  "agent.terminated": "terminated",
-  "agent.key_created": "created API key for",
-  "agent.budget_updated": "updated budget for",
-  "agent.runtime_session_reset": "reset session for",
-  "heartbeat.invoked": "invoked heartbeat for",
-  "heartbeat.cancelled": "cancelled heartbeat for",
-  "approval.created": "requested approval",
-  "approval.approved": "approved",
-  "approval.rejected": "rejected",
-  "project.created": "created",
-  "project.updated": "updated",
-  "project.deleted": "deleted",
-  "goal.created": "created",
-  "goal.updated": "updated",
-  "goal.deleted": "deleted",
-  "cost.reported": "reported cost for",
-  "cost.recorded": "recorded cost for",
-  "company.created": "created company",
-  "company.updated": "updated company",
-  "company.archived": "archived",
-  "company.budget_updated": "updated budget for",
+  "issue.created": "생성함",
+  "issue.updated": "업데이트함",
+  "issue.checked_out": "체크아웃함",
+  "issue.released": "릴리스함",
+  "issue.comment_added": "댓글 추가함",
+  "issue.attachment_added": "첨부파일 추가함",
+  "issue.attachment_removed": "첨부파일 제거함",
+  "issue.document_created": "문서 생성함",
+  "issue.document_updated": "문서 업데이트함",
+  "issue.document_deleted": "문서 삭제함",
+  "issue.commented": "댓글 추가함",
+  "issue.deleted": "삭제함",
+  "issue.read_marked": "읽음 처리함",
+  "issue.read_unmarked": "읽음 취소함",
+  "issue.inbox_archived": "받은편지함에서 보관함",
+  "issue.inbox_unarchived": "보관 취소함",
+  "agent.created": "생성함",
+  "agent.updated": "업데이트함",
+  "agent.paused": "일시정지함",
+  "agent.resumed": "재개함",
+  "agent.terminated": "종료함",
+  "agent.hire_created": "에이전트 채용 요청함",
+  "agent.key_created": "API 키 생성함",
+  "agent.budget_updated": "예산 업데이트함",
+  "agent.runtime_session_reset": "세션 초기화함",
+  "heartbeat.invoked": "하트비트 실행함",
+  "heartbeat.cancelled": "하트비트 취소함",
+  "approval.created": "승인 요청함",
+  "approval.approved": "승인함",
+  "approval.rejected": "거절함",
+  "project.created": "생성함",
+  "project.updated": "업데이트함",
+  "project.deleted": "삭제함",
+  "goal.created": "생성함",
+  "goal.updated": "업데이트함",
+  "goal.deleted": "삭제함",
+  "cost.reported": "비용 보고함",
+  "cost.recorded": "비용 기록함",
+  "company.created": "회사 생성함",
+  "company.updated": "회사 업데이트함",
+  "company.archived": "보관함",
+  "company.budget_updated": "예산 업데이트함",
 };
 
 function humanizeValue(value: unknown): string {
-  if (typeof value !== "string") return String(value ?? "none");
+  if (typeof value !== "string") return String(value ?? "없음");
   return value.replace(/_/g, " ");
 }
 
@@ -55,14 +60,14 @@ function formatVerb(action: string, details?: Record<string, unknown> | null): s
     if (details.status !== undefined) {
       const from = previous.status;
       return from
-        ? `changed status from ${humanizeValue(from)} to ${humanizeValue(details.status)} on`
-        : `changed status to ${humanizeValue(details.status)} on`;
+        ? `상태를 ${humanizeValue(from)}에서 ${humanizeValue(details.status)}(으)로 변경함`
+        : `상태를 ${humanizeValue(details.status)}(으)로 변경함`;
     }
     if (details.priority !== undefined) {
       const from = previous.priority;
       return from
-        ? `changed priority from ${humanizeValue(from)} to ${humanizeValue(details.priority)} on`
-        : `changed priority to ${humanizeValue(details.priority)} on`;
+        ? `우선순위를 ${humanizeValue(from)}에서 ${humanizeValue(details.priority)}(으)로 변경함`
+        : `우선순위를 ${humanizeValue(details.priority)}(으)로 변경함`;
     }
   }
   return ACTION_VERBS[action] ?? action.replace(/[._]/g, " ");
@@ -106,7 +111,7 @@ export function ActivityRow({ event, agentMap, entityNameMap, entityTitleMap, cl
     : entityLink(event.entityType, event.entityId, name);
 
   const actor = event.actorType === "agent" ? agentMap.get(event.actorId) : null;
-  const actorName = actor?.name ?? (event.actorType === "system" ? "System" : event.actorType === "user" ? "Board" : event.actorId || "Unknown");
+  const actorName = actor?.name ?? (event.actorType === "system" ? "시스템" : event.actorType === "user" ? "Board" : event.actorId || "알 수 없음");
 
   const inner = (
     <div className="flex gap-3">

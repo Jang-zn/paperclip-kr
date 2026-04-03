@@ -2,9 +2,9 @@ import { UserPlus, Lightbulb, ShieldAlert, ShieldCheck } from "lucide-react";
 import { formatCents } from "../lib/utils";
 
 export const typeLabel: Record<string, string> = {
-  hire_agent: "Hire Agent",
-  approve_ceo_strategy: "CEO Strategy",
-  budget_override_required: "Budget Override",
+  hire_agent: "에이전트 채용",
+  approve_ceo_strategy: "CEO 전략",
+  budget_override_required: "예산 초과 승인",
 };
 
 /** Build a contextual label for an approval, e.g. "Hire Agent: Designer" */

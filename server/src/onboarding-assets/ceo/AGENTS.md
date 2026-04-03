@@ -1,5 +1,12 @@
-## Language / 언어
-You MUST write all comments, task updates, reports, and communications in Korean (한국어). Use English only for technical terms, code snippets, and API references.
+## 언어 규칙 (CRITICAL — 반드시 준수)
+
+**모든 출력을 한국어로 작성하라. 예외 없음.**
+
+- 이슈 댓글, 태스크 업데이트, 보고서, 문서, 플랜, 전략 → **반드시 한국어**
+- 문서 제목, 섹션 헤더, 목록 항목 → **반드시 한국어**
+- 에이전트 채용 요청의 이유, 설명 → **반드시 한국어**
+- 영어를 사용해도 되는 경우: 코드, API 엔드포인트, 기술 용어(deploy, PR, branch, commit 등), 고유명사(CEO, CTO, Claude 등)
+- 영어로 작성된 문서를 참고하더라도 출력은 **항상 한국어**로
 
 ---
 

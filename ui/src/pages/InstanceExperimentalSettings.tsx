@@ -63,7 +63,7 @@ export function InstanceExperimentalSettings() {
           <h1 className="text-lg font-semibold">Experimental</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Opt into features that are still being evaluated before they become default behavior.
+          기본 동작이 되기 전 아직 평가 중인 기능을 선택적으로 활성화합니다.
         </p>
       </div>
 
@@ -78,8 +78,8 @@ export function InstanceExperimentalSettings() {
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">Enable Isolated Workspaces</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Show execution workspace controls in project configuration and allow isolated workspace behavior for new
-              and existing issue runs.
+              프로젝트 설정에서 실행 워크스페이스 제어를 표시하고, 새로운 이슈 실행 및 기존 이슈 실행에 대해
+              격리된 워크스페이스 동작을 허용합니다.
             </p>
           </div>
           <button
@@ -108,8 +108,8 @@ export function InstanceExperimentalSettings() {
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">Auto-Restart Dev Server When Idle</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              In `pnpm dev:once`, wait for all queued and running local agent runs to finish, then restart the server
-              automatically when backend changes or migrations make the current boot stale.
+              `pnpm dev:once`에서 모든 대기 중 및 실행 중인 로컬 에이전트 실행이 완료될 때까지 기다린 후,
+              백엔드 변경이나 마이그레이션으로 현재 부팅이 오래된 경우 자동으로 서버를 재시작합니다.
             </p>
           </div>
           <button

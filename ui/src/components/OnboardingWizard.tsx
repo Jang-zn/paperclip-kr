@@ -130,7 +130,7 @@ export function OnboardingWizard() {
 
   // Step 3
   const [taskTitle, setTaskTitle] = useState(
-    "Hire your first engineer and create a hiring plan"
+    "첫 번째 엔지니어를 채용하고 채용 계획을 세우세요"
   );
   const [taskDescription, setTaskDescription] = useState(
     DEFAULT_TASK_DESCRIPTION
@@ -299,7 +299,7 @@ export function OnboardingWizard() {
     setAdapterEnvLoading(false);
     setForceUnsetAnthropicApiKey(false);
     setUnsetAnthropicLoading(false);
-    setTaskTitle("Hire your first engineer and create a hiring plan");
+    setTaskTitle("첫 번째 엔지니어를 채용하고 채용 계획을 세우세요");
     setTaskDescription(DEFAULT_TASK_DESCRIPTION);
     setCreatedCompanyId(null);
     setCreatedCompanyPrefix(null);
@@ -681,9 +681,9 @@ export function OnboardingWizard() {
                       <Building2 className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Name your company</h3>
+                      <h3 className="font-medium">회사 이름을 정하세요</h3>
                       <p className="text-xs text-muted-foreground">
-                        This is the organization your agents will work for.
+                        에이전트들이 소속될 조직입니다.
                       </p>
                     </div>
                   </div>
@@ -734,9 +734,9 @@ export function OnboardingWizard() {
                       <Bot className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Create your first agent</h3>
+                      <h3 className="font-medium">첫 번째 에이전트를 만드세요</h3>
                       <p className="text-xs text-muted-foreground">
-                        Choose how this agent will run tasks.
+                        이 에이전트가 작업을 실행하는 방식을 선택하세요.
                       </p>
                     </div>
                   </div>
@@ -1166,10 +1166,10 @@ export function OnboardingWizard() {
                       <ListTodo className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Give it something to do</h3>
+                      <h3 className="font-medium">할 일을 만들어주세요</h3>
                       <p className="text-xs text-muted-foreground">
-                        Give your agent a small task to start with — a bug fix,
-                        a research question, writing a script.
+                        에이전트에게 간단한 작업을 주세요 — 버그 수정,
+                        리서치 질문, 스크립트 작성 등.
                       </p>
                     </div>
                   </div>
@@ -1207,10 +1207,10 @@ export function OnboardingWizard() {
                       <Rocket className="h-5 w-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium">Ready to launch</h3>
+                      <h3 className="font-medium">시작할 준비가 되었습니다</h3>
                       <p className="text-xs text-muted-foreground">
-                        Everything is set up. Launching now will create the
-                        starter task, wake the agent, and open the issue.
+                        모든 설정이 완료되었습니다. 시작하면 초기 작업을 생성하고,
+                        에이전트를 깨우고, 이슈를 엽니다.
                       </p>
                     </div>
                   </div>

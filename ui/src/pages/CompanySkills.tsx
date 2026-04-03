@@ -583,7 +583,7 @@ function SkillPane({
                     className="truncate hover:text-foreground text-muted-foreground transition-colors cursor-pointer"
                     onClick={() => {
                       navigator.clipboard.writeText(detail.sourcePath!);
-                      pushToast({ title: "Copied path to workspace" });
+                      pushToast({ title: "경로가 복사되었습니다" });
                     }}
                   >
                     {source.label}
@@ -855,7 +855,7 @@ export function CompanySkills() {
       if (result.imported[0]) navigate(skillRoute(result.imported[0].id));
       pushToast({
         tone: "success",
-        title: "Skills imported",
+        title: "스킬을 가져왔습니다",
         body: `${result.imported.length} skill${result.imported.length === 1 ? "" : "s"} added.`,
       });
       if (result.warnings[0]) {
@@ -866,7 +866,7 @@ export function CompanySkills() {
     onError: (error) => {
       pushToast({
         tone: "error",
-        title: "Skill import failed",
+        title: "스킬 가져오기에 실패했습니다",
         body: error instanceof Error ? error.message : "Failed to import skill source.",
       });
     },
@@ -880,14 +880,14 @@ export function CompanySkills() {
       setCreateOpen(false);
       pushToast({
         tone: "success",
-        title: "Skill created",
+        title: "스킬이 생성되었습니다",
         body: `${skill.name} is now editable in the Paperclip workspace.`,
       });
     },
     onError: (error) => {
       pushToast({
         tone: "error",
-        title: "Skill creation failed",
+        title: "스킬 생성에 실패했습니다",
         body: error instanceof Error ? error.message : "Failed to create skill.",
       });
     },
@@ -905,7 +905,7 @@ export function CompanySkills() {
       setScanStatusMessage(summary);
       pushToast({
         tone: "success",
-        title: "Project skill scan complete",
+        title: "프로젝트 스킬 스캔이 완료되었습니다",
         body: summary,
       });
       if (result.conflicts[0]) {
@@ -949,14 +949,14 @@ export function CompanySkills() {
       setEditMode(false);
       pushToast({
         tone: "success",
-        title: "Skill saved",
+        title: "스킬이 저장되었습니다",
         body: result.path,
       });
     },
     onError: (error) => {
       pushToast({
         tone: "error",
-        title: "Save failed",
+        title: "저장에 실패했습니다",
         body: error instanceof Error ? error.message : "Failed to save skill file.",
       });
     },
@@ -974,21 +974,21 @@ export function CompanySkills() {
       navigate(skillRoute(skill.id, selectedPath));
       pushToast({
         tone: "success",
-        title: "Skill updated",
+        title: "스킬이 업데이트되었습니다",
         body: skill.sourceRef ? `Pinned to ${shortRef(skill.sourceRef)}` : skill.name,
       });
     },
     onError: (error) => {
       pushToast({
         tone: "error",
-        title: "Update failed",
+        title: "업데이트에 실패했습니다",
         body: error instanceof Error ? error.message : "Failed to install skill update.",
       });
     },
   });
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Boxes} message="Select a company to manage skills." />;
+    return <EmptyState icon={Boxes} message="스킬을 관리하려면 회사를 선택하세요." />;
   }
 
   function handleAddSkillSource() {

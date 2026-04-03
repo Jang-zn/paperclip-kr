@@ -168,13 +168,13 @@ const statusColors: Record<string, string> = {
 };
 
 const statusLabels: Record<string, string> = {
-  todo: "To Do",
-  in_progress: "In Progress",
-  in_review: "In Review",
-  done: "Done",
-  blocked: "Blocked",
-  cancelled: "Cancelled",
-  backlog: "Backlog",
+  todo: "할 일",
+  in_progress: "진행 중",
+  in_review: "검토 중",
+  done: "완료",
+  blocked: "차단됨",
+  cancelled: "취소됨",
+  backlog: "백로그",
 };
 
 export function IssueStatusChart({ issues }: { issues: { status: string; createdAt: Date }[] }) {

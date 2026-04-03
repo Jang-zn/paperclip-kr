@@ -1523,7 +1523,7 @@ export function Inbox() {
   }, [selectedIndex]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={InboxIcon} message="Select a company to view inbox." />;
+    return <EmptyState icon={InboxIcon} message="받은편지함을 보려면 회사를 선택하세요." />;
   }
 
   const hasRunFailures = failedRuns.length > 0;
@@ -1657,14 +1657,14 @@ export function Inbox() {
                 onClick={() => setShowMarkAllReadConfirm(true)}
                 disabled={markAllReadMutation.isPending}
               >
-                {markAllReadMutation.isPending ? "Marking…" : "Mark all as read"}
+                {markAllReadMutation.isPending ? "처리 중…" : "모두 읽음으로 표시"}
               </Button>
               <Dialog open={showMarkAllReadConfirm} onOpenChange={setShowMarkAllReadConfirm}>
                 <DialogContent className="sm:max-w-md">
                   <DialogHeader>
-                    <DialogTitle>Mark all as read?</DialogTitle>
+                    <DialogTitle>모두 읽음으로 표시할까요?</DialogTitle>
                     <DialogDescription>
-                      This will mark {unreadIssueIds.length} unread {unreadIssueIds.length === 1 ? "item" : "items"} as read.
+                      읽지 않은 항목 {unreadIssueIds.length}개를 읽음으로 표시합니다.
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
@@ -1677,7 +1677,7 @@ export function Inbox() {
                         markAllReadMutation.mutate(unreadIssueIds);
                       }}
                     >
-                      Mark all as read
+                      모두 읽음으로 표시
                     </Button>
                   </DialogFooter>
                 </DialogContent>

@@ -75,7 +75,7 @@ export function Approvals() {
   ).length;
 
   if (!selectedCompanyId) {
-    return <p className="text-sm text-muted-foreground">Select a company first.</p>;
+    return <p className="text-sm text-muted-foreground">먼저 회사를 선택하세요.</p>;
   }
 
   if (isLoading) {

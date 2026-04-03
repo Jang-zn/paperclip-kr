@@ -313,7 +313,7 @@ export function ExecutionWorkspaceDetail() {
       setErrorMessage(null);
     },
     onError: (error) => {
-      setErrorMessage(error instanceof Error ? error.message : "Failed to save execution workspace.");
+      setErrorMessage(error instanceof Error ? error.message : "실행 워크스페이스 저장에 실패했습니다.");
     },
   });
   const workspaceOperationsQuery = useQuery({
@@ -339,15 +339,15 @@ export function ExecutionWorkspaceDetail() {
     },
     onError: (error) => {
       setRuntimeActionMessage(null);
-      setErrorMessage(error instanceof Error ? error.message : "Failed to control runtime services.");
+      setErrorMessage(error instanceof Error ? error.message : "런타임 서비스 제어에 실패했습니다.");
     },
   });
 
-  if (workspaceQuery.isLoading) return <p className="text-sm text-muted-foreground">Loading workspace…</p>;
+  if (workspaceQuery.isLoading) return <p className="text-sm text-muted-foreground">워크스페이스를 불러오는 중…</p>;
   if (workspaceQuery.error) {
     return (
       <p className="text-sm text-destructive">
-        {workspaceQuery.error instanceof Error ? workspaceQuery.error.message : "Failed to load workspace"}
+        {workspaceQuery.error instanceof Error ? workspaceQuery.error.message : "워크스페이스를 불러오지 못했습니다"}
       </p>
     );
   }
@@ -364,7 +364,7 @@ export function ExecutionWorkspaceDetail() {
     try {
       patch = buildWorkspacePatch(initialState, form);
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Failed to build workspace update.");
+      setErrorMessage(error instanceof Error ? error.message : "워크스페이스 업데이트 생성에 실패했습니다.");
       return;
     }
 
@@ -758,12 +758,12 @@ export function ExecutionWorkspaceDetail() {
               </div>
               <Separator className="my-4" />
               {workspaceOperationsQuery.isLoading ? (
-                <p className="text-sm text-muted-foreground">Loading workspace operations…</p>
+                <p className="text-sm text-muted-foreground">워크스페이스 작업을 불러오는 중…</p>
               ) : workspaceOperationsQuery.error ? (
                 <p className="text-sm text-destructive">
                   {workspaceOperationsQuery.error instanceof Error
                     ? workspaceOperationsQuery.error.message
-                    : "Failed to load workspace operations."}
+                    : "워크스페이스 작업을 불러오지 못했습니다."}
                 </p>
               ) : workspaceOperationsQuery.data && workspaceOperationsQuery.data.length > 0 ? (
                 <div className="space-y-3">
@@ -812,7 +812,7 @@ export function ExecutionWorkspaceDetail() {
             <p className="text-sm text-destructive">
               {linkedIssuesQuery.error instanceof Error
                 ? linkedIssuesQuery.error.message
-                : "Failed to load linked issues."}
+                : "연결된 이슈를 불러오지 못했습니다."}
             </p>
           ) : linkedIssues.length > 0 ? (
             <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-1">

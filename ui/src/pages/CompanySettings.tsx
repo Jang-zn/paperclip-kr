@@ -91,13 +91,13 @@ export function CompanySettings() {
     onSuccess: (_company, enabled) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.companies.all });
       pushToast({
-        title: enabled ? "Feedback sharing enabled" : "Feedback sharing disabled",
+        title: enabled ? "피드백 공유가 활성화되었습니다" : "피드백 공유가 비활성화되었습니다",
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Failed to update feedback sharing",
+        title: "피드백 공유 설정 업데이트에 실패했습니다",
         body: err instanceof Error ? err.message : "Unknown error",
         tone: "error",
       });
@@ -152,7 +152,7 @@ export function CompanySettings() {
     },
     onError: (err) => {
       setInviteError(
-        err instanceof Error ? err.message : "Failed to create invite"
+        err instanceof Error ? err.message : "초대 생성에 실패했습니다"
       );
     }
   });
@@ -257,7 +257,7 @@ export function CompanySettings() {
           General
         </div>
         <div className="space-y-3 rounded-md border border-border px-4 py-4">
-          <Field label="Company name" hint="The display name for your company.">
+          <Field label="Company name" hint="회사의 표시 이름입니다.">
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
               type="text"
@@ -267,7 +267,7 @@ export function CompanySettings() {
           </Field>
           <Field
             label="Description"
-            hint="Optional description shown in the company profile."
+            hint="회사 프로필에 표시되는 선택적 설명입니다."
           >
             <input
               className="w-full rounded-md border border-border bg-transparent px-2.5 py-1.5 text-sm outline-none"
@@ -298,7 +298,7 @@ export function CompanySettings() {
             <div className="flex-1 space-y-3">
               <Field
                 label="Logo"
-                hint="Upload a PNG, JPEG, WEBP, GIF, or SVG logo image."
+                hint="PNG, JPEG, WEBP, GIF, SVG 형식의 로고 이미지를 업로드하세요."
               >
                 <div className="space-y-2">
                   <input
@@ -315,7 +315,7 @@ export function CompanySettings() {
                         onClick={handleClearLogo}
                         disabled={clearLogoMutation.isPending}
                       >
-                        {clearLogoMutation.isPending ? "Removing..." : "Remove logo"}
+                        {clearLogoMutation.isPending ? "제거 중..." : "Remove logo"}
                       </Button>
                     </div>
                   )}
@@ -333,13 +333,13 @@ export function CompanySettings() {
                     </span>
                   )}
                   {logoUploadMutation.isPending && (
-                    <span className="text-xs text-muted-foreground">Uploading logo...</span>
+                    <span className="text-xs text-muted-foreground">로고 업로드 중...</span>
                   )}
                 </div>
               </Field>
               <Field
                 label="Brand color"
-                hint="Sets the hue for the company icon. Leave empty for auto-generated color."
+                hint="회사 아이콘의 색상을 설정합니다. 비워두면 자동으로 생성됩니다."
               >
                 <div className="flex items-center gap-2">
                   <input
@@ -385,7 +385,7 @@ export function CompanySettings() {
             onClick={handleSaveGeneral}
             disabled={generalMutation.isPending || !companyName.trim()}
           >
-            {generalMutation.isPending ? "Saving..." : "Save changes"}
+            {generalMutation.isPending ? "저장 중..." : "Save changes"}
           </Button>
           {generalMutation.isSuccess && (
             <span className="text-xs text-muted-foreground">Saved</span>
@@ -408,7 +408,7 @@ export function CompanySettings() {
         <div className="rounded-md border border-border px-4 py-3">
           <ToggleField
             label="Require board approval for new hires"
-            hint="New agent hires stay pending until approved by board."
+            hint="새 에이전트 채용은 이사회 승인 전까지 대기 상태입니다."
             checked={!!selectedCompany.requireBoardApprovalForNewAgents}
             onChange={(v) => settingsMutation.mutate(v)}
             toggleTestId="company-settings-team-approval-toggle"
@@ -423,12 +423,12 @@ export function CompanySettings() {
         <div className="space-y-3 rounded-md border border-border px-4 py-4">
           <ToggleField
             label="Allow sharing voted AI outputs with Paperclip Labs"
-            hint="Only AI-generated outputs you explicitly vote on are eligible for feedback sharing."
+            hint="직접 투표한 AI 생성 결과물만 피드백 공유 대상이 됩니다."
             checked={!!selectedCompany.feedbackDataSharingEnabled}
             onChange={(enabled) => feedbackSharingMutation.mutate(enabled)}
           />
           <p className="text-sm text-muted-foreground">
-            Votes are always saved locally. This setting controls whether voted AI outputs may also be marked for sharing with Paperclip Labs.
+            투표는 항상 로컬에 저장됩니다. 이 설정은 투표한 AI 결과물이 Paperclip Labs와 공유 대상으로 표시될지 여부를 제어합니다.
           </p>
           <div className="space-y-1 text-xs text-muted-foreground">
             <div>
@@ -442,7 +442,7 @@ export function CompanySettings() {
                   : ""}
               </div>
             ) : (
-              <div>Sharing is currently disabled.</div>
+              <div>공유가 현재 비활성화되어 있습니다.</div>
             )}
             {FEEDBACK_TERMS_URL ? (
               <a
@@ -478,7 +478,7 @@ export function CompanySettings() {
               disabled={inviteMutation.isPending}
             >
               {inviteMutation.isPending
-                ? "Generating..."
+                ? "생성 중..."
                 : "Generate OpenClaw Invite Prompt"}
             </Button>
           </div>
@@ -600,7 +600,7 @@ export function CompanySettings() {
               }}
             >
               {archiveMutation.isPending
-                ? "Archiving..."
+                ? "보관 처리 중..."
                 : selectedCompany.status === "archived"
                 ? "Already archived"
                 : "Archive company"}

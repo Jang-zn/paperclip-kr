@@ -257,7 +257,7 @@ export function OrgChart() {
   }, [zoom, pan]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Network} message="Select a company to view the org chart." />;
+    return <EmptyState icon={Network} message="조직도를 보려면 회사를 선택하세요." />;
   }
 
   if (isLoading) {
@@ -265,7 +265,7 @@ export function OrgChart() {
   }
 
   if (orgTree && orgTree.length === 0) {
-    return <EmptyState icon={Network} message="No organizational hierarchy defined." />;
+    return <EmptyState icon={Network} message="조직 구조가 정의되지 않았습니다." />;
   }
 
   return (

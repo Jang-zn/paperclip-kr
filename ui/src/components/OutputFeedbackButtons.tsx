@@ -133,7 +133,7 @@ export function OutputFeedbackButtons({
       </div>
       {collectingDownvoteReason ? (
         <div className="mt-2 rounded-md border border-border/60 bg-accent/20 p-3">
-          <div className="mb-2 text-sm font-medium">What could have been better?</div>
+          <div className="mb-2 text-sm font-medium">어떤 점이 더 나았으면 좋겠나요?</div>
           <Textarea
             value={downvoteReason}
             onChange={(event) => setDownvoteReason(event.target.value)}
@@ -166,7 +166,7 @@ export function OutputFeedbackButtons({
                 });
               }}
             >
-              {isSaving ? "Saving..." : "Save note"}
+              {isSaving ? "저장 중..." : "메모 저장"}
             </Button>
           </div>
         </div>
@@ -183,24 +183,24 @@ export function OutputFeedbackButtons({
       >
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Save your feedback sharing preference</DialogTitle>
+            <DialogTitle>피드백 공유 설정 저장</DialogTitle>
             <DialogDescription>
-              Choose whether voted AI outputs can be shared with Paperclip Labs. This
-              answer becomes the default for future thumbs up and thumbs down votes.
+              투표한 AI 출력을 Paperclip Labs와 공유할지 선택하세요. 이 선택은
+              향후 좋아요/싫어요 투표의 기본 설정이 됩니다.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-3 text-sm text-muted-foreground">
             <p>
-              This vote is always saved locally.
+              이 투표는 항상 로컬에 저장됩니다.
             </p>
             <p>
-              Choose <span className="font-medium text-foreground">Always allow</span> to share
-              this vote and future voted AI outputs. Choose{" "}
-              <span className="font-medium text-foreground">Don't allow</span> to keep this vote
-              and future votes local.
+              <span className="font-medium text-foreground">항상 허용</span>을 선택하면
+              이 투표와 향후 투표한 AI 출력이 공유됩니다.{" "}
+              <span className="font-medium text-foreground">허용 안 함</span>을 선택하면
+              이 투표와 향후 투표가 로컬에만 저장됩니다.
             </p>
             <p>
-              You can change this later in Instance Settings &gt; General.
+              이 설정은 나중에 Instance Settings &gt; General에서 변경할 수 있습니다.
             </p>
             {termsUrl ? (
               <a
@@ -229,7 +229,7 @@ export function OutputFeedbackButtons({
                 );
               }}
             >
-              {isSaving ? "Saving..." : "Don't allow"}
+              {isSaving ? "저장 중..." : "허용 안 함"}
             </Button>
             <Button
               type="button"
@@ -249,7 +249,7 @@ export function OutputFeedbackButtons({
                 );
               }}
             >
-              {isSaving ? "Saving..." : "Always allow"}
+              {isSaving ? "저장 중..." : "항상 허용"}
             </Button>
           </DialogFooter>
         </DialogContent>

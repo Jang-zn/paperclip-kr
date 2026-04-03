@@ -168,14 +168,14 @@ export function Dashboard() {
       return (
         <EmptyState
           icon={LayoutDashboard}
-          message="Welcome to Paperclip. Set up your first company and agent to get started."
+          message="Paperclip에 오신 것을 환영합니다. 첫 번째 회사를 만들어 보세요."
           action="Get Started"
           onAction={openOnboarding}
         />
       );
     }
     return (
-      <EmptyState icon={LayoutDashboard} message="Create or select a company to view the dashboard." />
+      <EmptyState icon={LayoutDashboard} message="대시보드를 보려면 회사를 생성하거나 선택하세요." />
     );
   }
 
@@ -194,7 +194,7 @@ export function Dashboard() {
           <div className="flex items-center gap-2.5">
             <Bot className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0" />
             <p className="text-sm text-amber-900 dark:text-amber-100">
-              You have no agents.
+              에이전트가 없습니다.
             </p>
           </div>
           <button
@@ -334,7 +334,7 @@ export function Dashboard() {
               </h3>
               {recentIssues.length === 0 ? (
                 <div className="border border-border p-4">
-                  <p className="text-sm text-muted-foreground">No tasks yet.</p>
+                  <p className="text-sm text-muted-foreground">아직 작업이 없습니다.</p>
                 </div>
               ) : (
                 <div className="border border-border divide-y divide-border overflow-hidden">

@@ -53,11 +53,11 @@ function BootstrapPendingPage({ hasActiveInvite = false }: { hasActiveInvite?: b
   return (
     <div className="mx-auto max-w-xl py-10">
       <div className="rounded-lg border border-border bg-card p-6">
-        <h1 className="text-xl font-semibold">Instance setup required</h1>
+        <h1 className="text-xl font-semibold">초기 설정이 필요합니다</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           {hasActiveInvite
-            ? "No instance admin exists yet. A bootstrap invite is already active. Check your Paperclip startup logs for the first admin invite URL, or run this command to rotate it:"
-            : "No instance admin exists yet. Run this command in your Paperclip environment to generate the first admin invite URL:"}
+            ? "아직 인스턴스 관리자가 없습니다. 부트스트랩 초대가 이미 활성화되어 있습니다. Paperclip 시작 로그에서 첫 번째 관리자 초대 URL을 확인하거나, 다음 명령어를 실행하여 갱신하세요:"
+            : "아직 인스턴스 관리자가 없습니다. Paperclip 환경에서 다음 명령어를 실행하여 첫 번째 관리자 초대 URL을 생성하세요:"}
         </p>
         <pre className="mt-4 overflow-x-auto rounded-md border border-border bg-muted/30 p-3 text-xs">
 {`pnpm paperclipai auth bootstrap-ceo`}
@@ -201,13 +201,13 @@ function OnboardingRoutePage() {
   const title = matchedCompany
     ? `Add another agent to ${matchedCompany.name}`
     : companies.length > 0
-      ? "Create another company"
-      : "Create your first company";
+      ? "다른 회사 만들기"
+      : "첫 번째 회사 만들기";
   const description = matchedCompany
-    ? "Run onboarding again to add an agent and a starter task for this company."
+    ? "온보딩을 다시 실행하여 이 회사에 에이전트와 시작 작업을 추가하세요."
     : companies.length > 0
-      ? "Run onboarding again to create another company and seed its first agent."
-      : "Get started by creating a company and your first agent.";
+      ? "온보딩을 다시 실행하여 다른 회사를 만들고 첫 번째 에이전트를 설정하세요."
+      : "회사를 만들고 첫 번째 에이전트를 설정하여 시작하세요.";
 
   return (
     <div className="mx-auto max-w-xl py-10">
@@ -289,9 +289,9 @@ function NoCompaniesStartPage() {
   return (
     <div className="mx-auto max-w-xl py-10">
       <div className="rounded-lg border border-border bg-card p-6">
-        <h1 className="text-xl font-semibold">Create your first company</h1>
+        <h1 className="text-xl font-semibold">첫 번째 회사 만들기</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Get started by creating a company.
+          회사를 만들어 시작하세요.
         </p>
         <div className="mt-4">
           <Button onClick={() => openOnboarding()}>New Company</Button>

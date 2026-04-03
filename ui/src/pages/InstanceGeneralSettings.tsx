@@ -63,7 +63,7 @@ export function InstanceGeneralSettings() {
           <h1 className="text-lg font-semibold">General</h1>
         </div>
         <p className="text-sm text-muted-foreground">
-          Configure instance-wide defaults that affect how operator-visible logs are displayed.
+          운영자에게 표시되는 로그 방식에 영향을 미치는 인스턴스 전체 기본값을 설정합니다.
         </p>
       </div>
 
@@ -78,9 +78,8 @@ export function InstanceGeneralSettings() {
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">Censor username in logs</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Hide the username segment in home-directory paths and similar operator-visible log output. Standalone
-              username mentions outside of paths are not yet masked in the live transcript view. This is off by
-              default.
+              홈 디렉토리 경로 및 유사한 운영자 표시 로그 출력에서 사용자명 부분을 숨깁니다. 경로 외부의 단독
+              사용자명 언급은 라이브 트랜스크립트 뷰에서 아직 마스킹되지 않습니다. 기본값은 꺼짐입니다.
             </p>
           </div>
           <button
@@ -113,8 +112,8 @@ export function InstanceGeneralSettings() {
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">Keyboard shortcuts</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Enable app keyboard shortcuts, including inbox navigation and global shortcuts like creating issues or
-              toggling panels. This is off by default.
+              인박스 탐색 및 이슈 생성, 패널 전환 등의 전역 단축키를 포함한 앱 키보드 단축키를 활성화합니다.
+              기본값은 꺼짐입니다.
             </p>
           </div>
           <button
@@ -143,8 +142,8 @@ export function InstanceGeneralSettings() {
           <div className="space-y-1.5">
             <h2 className="text-sm font-semibold">AI feedback sharing</h2>
             <p className="max-w-2xl text-sm text-muted-foreground">
-              Control whether thumbs up and thumbs down votes can send the voted AI output to
-              Paperclip Labs. Votes are always saved locally.
+              좋아요/싫어요 투표가 투표된 AI 결과물을 Paperclip Labs로 전송할 수 있는지 여부를 제어합니다.
+              투표는 항상 로컬에 저장됩니다.
             </p>
             {FEEDBACK_TERMS_URL ? (
               <a
@@ -159,8 +158,8 @@ export function InstanceGeneralSettings() {
           </div>
           {feedbackDataSharingPreference === "prompt" ? (
             <div className="rounded-lg border border-border/70 bg-accent/20 px-3 py-2 text-sm text-muted-foreground">
-              No default is saved yet. The next thumbs up or thumbs down choice will ask once and
-              then save the answer here.
+              아직 기본값이 저장되지 않았습니다. 다음 좋아요 또는 싫어요 선택 시 한 번 묻고
+              여기에 답변을 저장합니다.
             </div>
           ) : null}
           <div className="flex flex-wrap gap-2">
@@ -168,12 +167,12 @@ export function InstanceGeneralSettings() {
               {
                 value: "allowed",
                 label: "Always allow",
-                description: "Share voted AI outputs automatically.",
+                description: "투표한 AI 결과물을 자동으로 공유합니다.",
               },
               {
                 value: "not_allowed",
                 label: "Don't allow",
-                description: "Keep voted AI outputs local only.",
+                description: "투표한 AI 결과물을 로컬에만 유지합니다.",
               },
             ].map((option) => {
               const active = feedbackDataSharingPreference === option.value;

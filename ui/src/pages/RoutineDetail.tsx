@@ -382,11 +382,11 @@ export function RoutineDetail() {
   const copySecretValue = async (label: string, value: string) => {
     try {
       await navigator.clipboard.writeText(value);
-      pushToast({ title: `${label} copied`, tone: "success" });
+      pushToast({ title: `${label} 복사됨`, tone: "success" });
     } catch (error) {
       pushToast({
-        title: `Failed to copy ${label.toLowerCase()}`,
-        body: error instanceof Error ? error.message : "Clipboard access was denied.",
+        title: `${label.toLowerCase()} 복사에 실패했습니다`,
+        body: error instanceof Error ? error.message : "클립보드 접근이 거부되었습니다.",
         tone: "error",
       });
     }
@@ -426,8 +426,8 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to save routine",
-        body: error instanceof Error ? error.message : "Paperclip could not save the routine.",
+        title: "루틴 저장에 실패했습니다",
+        body: error instanceof Error ? error.message : "루틴을 저장할 수 없습니다.",
         tone: "error",
       });
     },
@@ -446,7 +446,7 @@ export function RoutineDetail() {
           : {}),
       }),
     onSuccess: async () => {
-      pushToast({ title: "Routine run started", tone: "success" });
+      pushToast({ title: "루틴 실행이 시작되었습니다", tone: "success" });
       setRunVariablesOpen(false);
       setActiveTab("runs");
       await Promise.all([
@@ -458,8 +458,8 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Routine run failed",
-        body: error instanceof Error ? error.message : "Paperclip could not start the routine run.",
+        title: "루틴 실행에 실패했습니다",
+        body: error instanceof Error ? error.message : "루틴을 시작할 수 없습니다.",
         tone: "error",
       });
     },
@@ -469,8 +469,8 @@ export function RoutineDetail() {
     mutationFn: (status: string) => routinesApi.update(routineId!, { status }),
     onSuccess: async (_data, status) => {
       pushToast({
-        title: "Routine saved",
-        body: status === "paused" ? "Automation paused." : "Automation enabled.",
+        title: "루틴이 저장되었습니다",
+        body: status === "paused" ? "자동화가 일시정지되었습니다." : "자동화가 활성화되었습니다.",
         tone: "success",
       });
       await Promise.all([
@@ -480,8 +480,8 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to update routine",
-        body: error instanceof Error ? error.message : "Paperclip could not update the routine.",
+        title: "루틴 업데이트에 실패했습니다",
+        body: error instanceof Error ? error.message : "루틴을 업데이트할 수 없습니다.",
         tone: "error",
       });
     },
@@ -508,14 +508,14 @@ export function RoutineDetail() {
     onSuccess: async (result) => {
       if (result.secretMaterial) {
         setSecretMessage({
-          title: "Webhook trigger created",
+          title: "웹훅 트리거가 생성되었습니다",
           webhookUrl: result.secretMaterial.webhookUrl,
           webhookSecret: result.secretMaterial.webhookSecret,
         });
       } else {
         pushToast({
-          title: "Trigger added",
-          body: "The routine schedule was saved.",
+          title: "트리거가 추가되었습니다",
+          body: "루틴 일정이 저장되었습니다.",
           tone: "success",
         });
       }
@@ -527,7 +527,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to add trigger",
+        title: "트리거 추가에 실패했습니다",
         body: error instanceof Error ? error.message : "Paperclip could not create the trigger.",
         tone: "error",
       });
@@ -538,8 +538,8 @@ export function RoutineDetail() {
     mutationFn: ({ id, patch }: { id: string; patch: Record<string, unknown> }) => routinesApi.updateTrigger(id, patch),
     onSuccess: async () => {
       pushToast({
-        title: "Trigger saved",
-        body: "The routine cadence update was saved.",
+        title: "트리거가 저장되었습니다",
+        body: "루틴 주기 변경이 저장되었습니다.",
         tone: "success",
       });
       await Promise.all([
@@ -550,7 +550,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to update trigger",
+        title: "트리거 업데이트에 실패했습니다",
         body: error instanceof Error ? error.message : "Paperclip could not update the trigger.",
         tone: "error",
       });
@@ -561,7 +561,7 @@ export function RoutineDetail() {
     mutationFn: (id: string) => routinesApi.deleteTrigger(id),
     onSuccess: async () => {
       pushToast({
-        title: "Trigger deleted",
+        title: "트리거가 삭제되었습니다",
         tone: "success",
       });
       await Promise.all([
@@ -572,7 +572,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to delete trigger",
+        title: "트리거 삭제에 실패했습니다",
         body: error instanceof Error ? error.message : "Paperclip could not delete the trigger.",
         tone: "error",
       });
@@ -583,7 +583,7 @@ export function RoutineDetail() {
     mutationFn: (id: string): Promise<RotateRoutineTriggerResponse> => routinesApi.rotateTriggerSecret(id),
     onSuccess: async (result) => {
       setSecretMessage({
-        title: "Webhook secret rotated",
+        title: "웹훅 시크릿이 갱신되었습니다",
         webhookUrl: result.secretMaterial.webhookUrl,
         webhookSecret: result.secretMaterial.webhookSecret,
       });
@@ -594,7 +594,7 @@ export function RoutineDetail() {
     },
     onError: (error) => {
       pushToast({
-        title: "Failed to rotate webhook secret",
+        title: "웹훅 시크릿 갱신에 실패했습니다",
         body: error instanceof Error ? error.message : "Paperclip could not rotate the webhook secret.",
         tone: "error",
       });
@@ -635,7 +635,7 @@ export function RoutineDetail() {
   const currentProject = editDraft.projectId ? projectById.get(editDraft.projectId) ?? null : null;
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Repeat} message="Select a company to view routines." />;
+    return <EmptyState icon={Repeat} message="루틴을 보려면 회사를 선택하세요." />;
   }
 
   if (isLoading) {
@@ -1006,7 +1006,7 @@ export function RoutineDetail() {
             </div>
             <div className="flex items-center justify-end">
               <Button size="sm" onClick={() => createTrigger.mutate()} disabled={createTrigger.isPending}>
-                {createTrigger.isPending ? "Adding..." : "Add trigger"}
+                {createTrigger.isPending ? "추가 중..." : "Add trigger"}
               </Button>
             </div>
           </div>

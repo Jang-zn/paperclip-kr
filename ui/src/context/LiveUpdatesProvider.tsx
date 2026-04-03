@@ -379,13 +379,13 @@ function buildJoinRequestToast(
   if (action !== "join.requested" && action !== "join.request_replayed") return null;
 
   const requestType = readString(details?.requestType);
-  const label = requestType === "agent" ? "Agent" : "Someone";
+  const label = requestType === "agent" ? "에이전트가" : "누군가";
 
   return {
-    title: `${label} wants to join`,
-    body: "A new join request is waiting for approval.",
+    title: `${label} 참여를 요청했습니다`,
+    body: "새 참여 요청이 승인을 기다리고 있습니다.",
     tone: "info",
-    action: { label: "View inbox", href: "/inbox/mine" },
+    action: { label: "받은편지함 보기", href: "/inbox/mine" },
     dedupeKey: `join-request:${entityId}`,
   };
 }
@@ -404,8 +404,8 @@ function buildAgentStatusToast(
   const name = nameOf(agentId) ?? `Agent ${shortId(agentId)}`;
   const title =
     status === "running"
-      ? `${name} started`
-      : `${name} errored`;
+      ? `${name} 시작됨`
+      : `${name} 오류 발생`;
 
   const agents = queryClient.getQueryData<Agent[]>(queryKeys.agents.list(companyId));
   const agent = agents?.find((a) => a.id === agentId);
@@ -415,7 +415,7 @@ function buildAgentStatusToast(
     title,
     body,
     tone,
-    action: { label: "View agent", href: `/agents/${agentId}` },
+    action: { label: "에이전트 보기", href: `/agents/${agentId}` },
     dedupeKey: `agent-status:${agentId}:${status}`,
   };
 }
@@ -434,11 +434,11 @@ function buildRunStatusToast(
   const name = nameOf(agentId) ?? `Agent ${shortId(agentId)}`;
   const tone = status === "succeeded" ? "success" : status === "cancelled" ? "warn" : "error";
   const statusLabel =
-    status === "succeeded" ? "succeeded"
-      : status === "failed" ? "failed"
-        : status === "timed_out" ? "timed out"
-          : "cancelled";
-  const title = `${name} run ${statusLabel}`;
+    status === "succeeded" ? "성공"
+      : status === "failed" ? "실패"
+        : status === "timed_out" ? "시간 초과"
+          : "취소됨";
+  const title = `${name} 실행 ${statusLabel}`;
 
   let body: string | undefined;
   if (error) {
@@ -452,7 +452,7 @@ function buildRunStatusToast(
     body,
     tone,
     ttlMs: status === "succeeded" ? 5000 : 7000,
-    action: { label: "View run", href: `/agents/${agentId}/runs/${runId}` },
+    action: { label: "실행 보기", href: `/agents/${agentId}/runs/${runId}` },
     dedupeKey: `run-status:${runId}:${status}`,
   };
 }

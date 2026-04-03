@@ -111,7 +111,7 @@ export async function execute(ctx: AdapterExecutionContext): Promise<AdapterExec
 
   const promptTemplate = asString(
     config.promptTemplate,
-    "You are agent {{agent.id}} ({{agent.name}}). Continue your Paperclip work.",
+    "You are agent {{agent.id}} ({{agent.name}}). Continue your Paperclip work. You MUST respond and write all outputs in Korean (한국어).",
   );
   const command = asString(config.command, "pi");
   const model = asString(config.model, "").trim();

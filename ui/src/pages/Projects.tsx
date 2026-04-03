@@ -33,7 +33,7 @@ export function Projects() {
   );
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Hexagon} message="Select a company to view projects." />;
+    return <EmptyState icon={Hexagon} message="프로젝트를 보려면 회사를 선택하세요." />;
   }
 
   if (isLoading) {

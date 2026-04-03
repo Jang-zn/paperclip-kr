@@ -27,7 +27,7 @@ export function Goals() {
   });
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Target} message="Select a company to view goals." />;
+    return <EmptyState icon={Target} message="목표를 보려면 회사를 선택하세요." />;
   }
 
   if (isLoading) {

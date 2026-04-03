@@ -26,11 +26,11 @@ export function NotFoundPage({ scope = "global", requestedPrefix }: NotFoundPage
   const currentPath = `${location.pathname}${location.search}${location.hash}`;
   const normalizedPrefix = requestedPrefix?.toUpperCase();
 
-  const title = scope === "invalid_company_prefix" ? "Company not found" : "Page not found";
+  const title = scope === "invalid_company_prefix" ? "회사를 찾을 수 없습니다" : "페이지를 찾을 수 없습니다";
   const description =
     scope === "invalid_company_prefix"
-      ? `No company matches prefix "${normalizedPrefix ?? "unknown"}".`
-      : "This route does not exist.";
+      ? `"${normalizedPrefix ?? "unknown"}" 접두사에 해당하는 회사가 없습니다.`
+      : "존재하지 않는 페이지입니다.";
 
   return (
     <div className="mx-auto max-w-2xl py-10">

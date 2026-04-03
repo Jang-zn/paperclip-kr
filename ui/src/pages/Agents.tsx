@@ -123,7 +123,7 @@ export function Agents() {
   }, [setBreadcrumbs]);
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Bot} message="Select a company to view agents." />;
+    return <EmptyState icon={Bot} message="에이전트를 보려면 회사를 선택하세요." />;
   }
 
   if (isLoading) {
@@ -303,7 +303,7 @@ export function Agents() {
 
       {effectiveView === "org" && orgTree && orgTree.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-8">
-          No organizational hierarchy defined.
+          조직 구조가 정의되지 않았습니다.
         </p>
       )}
     </div>

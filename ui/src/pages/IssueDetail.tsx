@@ -693,7 +693,7 @@ export function IssueDetail() {
         queryClient.setQueryData(queryKeys.issues.detail(issueId!), context.previousIssue);
       }
       pushToast({
-        title: "Comment failed",
+        title: "댓글 작성에 실패했습니다",
         body: err instanceof Error ? err.message : "Unable to post comment",
         tone: "error",
       });
@@ -781,7 +781,7 @@ export function IssueDetail() {
         queryClient.setQueryData(queryKeys.issues.detail(issueId!), context.previousIssue);
       }
       pushToast({
-        title: "Comment failed",
+        title: "댓글 작성에 실패했습니다",
         body: err instanceof Error ? err.message : "Unable to post comment",
         tone: "error",
       });
@@ -797,14 +797,14 @@ export function IssueDetail() {
     onSuccess: () => {
       invalidateIssue();
       pushToast({
-        title: "Interrupt requested",
+        title: "중단이 요청되었습니다",
         body: "The active run is stopping so queued comments can continue next.",
         tone: "success",
       });
     },
     onError: (err) => {
       pushToast({
-        title: "Interrupt failed",
+        title: "중단 요청에 실패했습니다",
         body: err instanceof Error ? err.message : "Unable to interrupt the active run",
         tone: "error",
       });
@@ -869,7 +869,7 @@ export function IssueDetail() {
         queryClient.setQueryData(queryKeys.issues.feedbackVotes(issueId!), context.previousVotes);
       }
       pushToast({
-        title: "Failed to save feedback",
+        title: "피드백 저장에 실패했습니다",
         body: err instanceof Error ? err.message : "Unknown error",
         tone: "error",
       });
@@ -932,11 +932,11 @@ export function IssueDetail() {
     onSuccess: () => {
       invalidateIssue();
       navigate(sourceBreadcrumb.href.startsWith("/inbox") ? sourceBreadcrumb.href : "/inbox", { replace: true });
-      pushToast({ title: "Issue archived from inbox", tone: "success" });
+      pushToast({ title: "이슈가 받은편지함에서 보관되었습니다", tone: "success" });
     },
     onError: (err) => {
       pushToast({
-        title: "Archive failed",
+        title: "보관에 실패했습니다",
         body: err instanceof Error ? err.message : "Unable to archive this issue from the inbox",
         tone: "error",
       });
@@ -1059,7 +1059,7 @@ export function IssueDetail() {
     const md = `# ${issue.identifier}: ${title}\n\n${body}`.trimEnd();
     await navigator.clipboard.writeText(md);
     setCopied(true);
-    pushToast({ title: "Copied to clipboard", tone: "success" });
+    pushToast({ title: "클립보드에 복사되었습니다", tone: "success" });
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -1123,7 +1123,7 @@ export function IssueDetail() {
         )}
       >
         <Paperclip className="h-3.5 w-3.5 mr-1.5" />
-        {uploadAttachment.isPending || importMarkdownDocument.isPending ? "Uploading..." : (
+        {uploadAttachment.isPending || importMarkdownDocument.isPending ? "업로드 중..." : (
           <>
             <span className="hidden sm:inline">Upload attachment</span>
             <span className="sm:hidden">Upload</span>

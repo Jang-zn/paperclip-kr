@@ -803,7 +803,7 @@ export function CompanyImport() {
     onError: (err) => {
       pushToast({
         tone: "error",
-        title: "Preview failed",
+        title: "미리보기 실패",
         body: err instanceof Error ? err.message : "Failed to preview import.",
       });
     },
@@ -862,7 +862,7 @@ export function CompanyImport() {
       setSelectedCompanyId(importedCompany.id);
       pushToast({
         tone: "success",
-        title: "Import complete",
+        title: "가져오기 완료",
         body: `${result.company.name}: ${result.agents.length} agent${result.agents.length === 1 ? "" : "s"} processed.`,
       });
       // Force a fresh dashboard load so newly imported agents are immediately visible.
@@ -871,7 +871,7 @@ export function CompanyImport() {
     onError: (err) => {
       pushToast({
         tone: "error",
-        title: "Import failed",
+        title: "가져오기 실패",
         body: err instanceof Error ? err.message : "Failed to apply import.",
       });
     },
@@ -887,7 +887,7 @@ export function CompanyImport() {
     } catch (err) {
       pushToast({
         tone: "error",
-        title: "Package read failed",
+        title: "패키지 읽기 실패",
         body: err instanceof Error ? err.message : "Failed to read folder.",
       });
     }
@@ -1085,7 +1085,7 @@ export function CompanyImport() {
   const selectedAction = selectedFile ? (actionMap.get(selectedFile) ?? null) : null;
 
   if (!selectedCompanyId) {
-    return <EmptyState icon={Download} message="Select a company to import into." />;
+    return <EmptyState icon={Download} message="가져오기할 회사를 선택하세요." />;
   }
 
   return (

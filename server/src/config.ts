@@ -1,6 +1,7 @@
 import { readConfigFile } from "./config-file.js";
-import { existsSync, realpathSync } from "node:fs";
-import { resolve } from "node:path";
+import { existsSync, realpathSync, mkdirSync, writeFileSync, appendFileSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { randomBytes } from "node:crypto";
 import { config as loadDotenv } from "dotenv";
 import { resolvePaperclipEnvPath } from "./paths.js";
 import { maybeRepairLegacyWorktreeConfigAndEnvFiles } from "./worktree-config.js";
@@ -38,6 +39,19 @@ if (!isSameFile && existsSync(CWD_ENV_PATH)) {
 }
 
 maybeRepairLegacyWorktreeConfigAndEnvFiles();
+
+// PAPERCLIP_AGENT_JWT_SECRET이 없으면 자동 생성 (onboard 없이 pnpm dev로 실행 시)
+if (!process.env.PAPERCLIP_AGENT_JWT_SECRET) {
+  const secret = randomBytes(32).toString("hex");
+  process.env.PAPERCLIP_AGENT_JWT_SECRET = secret;
+  const envDir = dirname(PAPERCLIP_ENV_FILE_PATH);
+  mkdirSync(envDir, { recursive: true });
+  if (existsSync(PAPERCLIP_ENV_FILE_PATH)) {
+    appendFileSync(PAPERCLIP_ENV_FILE_PATH, `\nPAPERCLIP_AGENT_JWT_SECRET=${secret}\n`);
+  } else {
+    writeFileSync(PAPERCLIP_ENV_FILE_PATH, `PAPERCLIP_AGENT_JWT_SECRET=${secret}\n`);
+  }
+}
 
 type DatabaseMode = "embedded-postgres" | "postgres";
 
